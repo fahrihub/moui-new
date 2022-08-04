@@ -187,7 +187,7 @@ export default {
         },
 
         postFormDelete() {
-            this.systemStore.$http(this.systemStore.dataURL + '/' + this.$route.params[this.paramKey], {
+            this.systemStore.$http(this.systemStore.dataURL , {
                 method: 'DELETE'
             })
             .then(() => {

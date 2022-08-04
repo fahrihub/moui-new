@@ -2,7 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SubsectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('employee', EmployeeController::class);
+
+Route::resource('section', SectionController::class);
+
+Route::resource('section.subsection', SubsectionController::class);
+
+Route::resource('schedule', ScheduleController::class);
+
+Route::resource('section.subsection.user', UserController::class);

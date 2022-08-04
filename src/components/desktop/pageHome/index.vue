@@ -16,6 +16,7 @@
             <moui-button
                 icon="logout"
                 tooltip="Keluar"
+                @click="attemptSignout"
             ></moui-button>
         </v-toolbar>
 
@@ -59,6 +60,22 @@ export default {
             systemStore,
             theme
         };
+    },
+
+    methods: {
+        attemptSignout() {
+            this.systemStore
+                .$http("logout", {
+                    method: "POST",
+                })
+                .then(() => {
+                    this.$storage.clear();
+
+                    setTimeout(() => {
+                        this.$router.push({ name: "default-landing" });
+                    }, 500);
+                });
+        },
     },
 }
 </script>

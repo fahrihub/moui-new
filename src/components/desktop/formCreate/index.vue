@@ -43,7 +43,10 @@
                     flat tile
                 >
                     <div class="relative pt-6">
-                        <slot :combos="combos" :record="currentRecord" :theme="theme"></slot>
+                        <slot 
+                        :combos="combos" 
+                        :record="currentRecord" 
+                        :theme="theme"></slot>
                     </div>
                 </v-sheet>
             </v-responsive>

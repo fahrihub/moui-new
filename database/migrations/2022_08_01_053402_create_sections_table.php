@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('degree_first')->nullable();
-            $table->text('degree_last')->nullable();
-            $table->enum('gender' , ['L', 'P']);
-            $table->text('education');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('sections');
     }
 };

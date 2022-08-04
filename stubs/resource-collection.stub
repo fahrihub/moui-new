@@ -2,7 +2,6 @@
 
 namespace {{ namespace }};
 
-use {{ namespacedModel }};
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class {{ class }} extends ResourceCollection
@@ -15,7 +14,7 @@ class {{ class }} extends ResourceCollection
      */
     public function toArray($request)
     {
-        return ResourceClass::collection($this->collection);
+        return XXXResource::collection($this->collection);
     }
 
     /**
@@ -48,7 +47,7 @@ class {{ class }} extends ResourceCollection
                 ],
 
                 /** the page data filter */
-                'filters' => {{ model }}::toFilterableParams($request),
+                'filters' => XXX::toFilterableParams($request),
 
                 /** the table header */
                 'headers' => [

@@ -1,6 +1,6 @@
 <template>
     <page-data
-        slug="employee" parent="system-dashboard" title="Data Pegawai"
+        slug="schedule" parent="system-dashboard" title="Agenda Kegiatan"
     > 
         <moui-table></moui-table>
     </page-data>

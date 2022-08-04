@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-
-use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class EmployeeCollection extends ResourceCollection
+class UserCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -16,7 +15,7 @@ class EmployeeCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return EmployeeResource::collection($this->collection);
+        return UserResource::collection($this->collection);
     }
 
     /**
@@ -35,17 +34,7 @@ class EmployeeCollection extends ResourceCollection
         return [
             'setups' => [
                 /** the page combo */
-                'combos' => [
-                    'genders' => [
-                        ['value' => 'L', 'text' => 'Laki-Laki'],
-                        ['value' => 'P', 'text' => 'Perempuan'],
-                    ],
-
-                    'educations' => [
-                        ['value' => 'S1', 'text' => 'Sarjana'],
-                        ['value' => 'S2', 'text' => 'Pascasarjana'],
-                    ],
-                ],
+                'combos' => [],
 
                 /** the page enable fitur */
                 'features' => [
@@ -59,11 +48,12 @@ class EmployeeCollection extends ResourceCollection
                 ],
 
                 /** the page data filter */
-                'filters' => Employee::toFilterableParams($request),
+                'filters' => User::toFilterableParams($request),
 
                 /** the table header */
                 'headers' => [
                     ['text' => 'Name', 'value' => 'name'],
+                    ['text' => 'Email', 'value' => 'email'],
                     ['text' => 'Updated', 'value' => 'updated_at', 'class' => 'field-datetime'],
                 ],
 

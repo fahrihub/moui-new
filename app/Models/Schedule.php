@@ -6,11 +6,10 @@ use App\Traits\Filterable;
 use App\Traits\Searchable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Resources\EmployeeResource;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Http\Resources\ScheduleShowResource;
 
-class Employee extends Model
+class Schedule extends Model
 {
     use Filterable,
         Searchable;
@@ -68,36 +67,6 @@ class Employee extends Model
         ];
     }
 
-    //agar tidak di kenal hacker
-    protected function fullName(): Attribute
-    {
-        return Attribute::make(
-            //concat in php
-            
-            
-            // get: fn ($value, $attributes) => $attributes['degree_first'] . '. ' . $attributes['name'] . ', ' . $attributes['degree_last']
-            get: fn ($value, $attributes) => ($attributes['degree_first'] ? $attributes['degree_first'] . '. ' : '') . $attributes['name'] . ($attributes['degree_last'] ? ', ' . $attributes['degree_last'] : '') 
-            // get: function ($value, $attrs) {
-            //     $f = $attrs['degree_first'] ? $attrs['degree_first'] . '. ' : '';
-            //     $n = $attrs['name'];
-            //     $l = $attrs['degree_last'] ? ', ' . $attrs['degree_last'] : '';
-            //     return $f . $n . $l;
-            // }
-        );
-    }
-
-    //untuk joion database
-    // protected function toFilterableScope($query){
-    //     return $query->join
-    // }
-    
-    protected function gender(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => $value === 'L' ? 'Laki - Laki' : 'Perempuan' 
-        );
-    }
-
     /**
      * scope for model-combo
      *
@@ -119,14 +88,14 @@ class Employee extends Model
 
             $model = new static;
             $model->name = $request->name;
-            $model->degree_first = $request->degree_first;
-            $model->degree_last = $request->degree_last;
-            $model->gender = $request->gender;
-            $model->education = $request->education;
+            $model->location = $request->location;
+            $model->created = $request->created;
+            $model->section = $request->section;
+            $model->subsection = $request->subsection;
+            $model->report = $request->report;
             $model->save();
 
             DB::commit();
-            return new EmployeeResource($model);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -135,23 +104,22 @@ class Employee extends Model
             ], 500);
         }
     }
-
-    public static function updateRecord($request)
+    
+    public static function updateRecord($model, $request)
     {
         DB::beginTransaction(); //transaksi pada database -> tabel 1 -> table 2 -> tabel 3
 
         try {
 
-            $model = new static;
             $model->name = $request->name;
-            $model->degree_first = $request->degree_first;
-            $model->degree_last = $request->degree_last;
-            $model->gender = $request->gender;
-            $model->education = $request->education;
+            $model->location = $request->location;
+            $model->created = $request->created;
+            $model->section = $request->section;
+            $model->subsection = $request->subsection;
+            $model->report = $request->report;
             $model->save();
-
             DB::commit();
-            return new EmployeeResource($model);
+            return new ScheduleShowResource($model);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([

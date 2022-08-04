@@ -147,7 +147,7 @@ export default {
         },
 
         postFormUpdate() {
-            this.systemStore.$http(this.systemStore.dataURL + '/' + this.$route.params[this.paramKey], {
+            this.systemStore.$http(this.systemStore.dataURL, {
                 method: 'PUT',
                 params: this.currentRecord
             })
