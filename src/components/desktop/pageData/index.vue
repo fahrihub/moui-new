@@ -40,7 +40,7 @@
                     class="absolute absolute--right d-flex align-center"
                     style="height: 64px; margin-right: 52px;"
                 >
-                    <slot name="toolbar_selected" :store="systemStore"></slot>
+                    <slot name="toolbar_selected" :store="systemStore" :record="currentRecord"></slot>
 
                     <moui-button
                         icon="folder_open"

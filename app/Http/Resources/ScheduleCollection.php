@@ -34,21 +34,7 @@ class ScheduleCollection extends ResourceCollection
         return [
             'setups' => [
                 /** the page combo */
-                'combos' => [
-                    'section' => [
-                        ['value' => 'Sekretariat', 'text' => 'Sekretariat'],
-                        ['value' => 'Pembinaan dan Data Kepegawaian', 'text' => 'Pembinaan dan Data Kepegawaian'],
-                        ['value' => 'Perencanaan dan Mutasi Kepegawaian', 'text' => 'Perencanaan dan Mutasi Kepegawaian'],
-                        ['value' => 'Pengembangan Sumber Daya Aparatur', 'text' => 'Pengembangan Sumber Daya Aparatur'],
-                    ],
-                    'subsection' => [
-                        ['value' => 'Umum dan Kepegawaian', 'text' => 'Umum dan Kepegawaian'],
-                        ['value' => 'Program dan Keuangan', 'text' => 'Program dan Keuangan'],
-                        ['value' => 'Disiplin', 'text' => 'Disiplin'],
-                        ['value' => 'Kinerja dan Kesejateraan Pegawai', 'text' => 'Kinerja dan Kesejateraan Pegawai'],
-                        ['value' => 'Data dan Informasi Kepegawaian', 'text' => 'Data dan Informasi Kepegawaian'],
-                    ]
-                ],
+                'combos' => [],
 
                 /** the page enable fitur */
                 'features' => [

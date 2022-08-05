@@ -7,6 +7,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SubsectionController;
+use App\Http\Controllers\SectionUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::resource('section.subsection', SubsectionController::class);
 Route::resource('schedule', ScheduleController::class);
 
 Route::resource('section.subsection.user', UserController::class);
+
+Route::resource('section.user', SectionUserController::class);

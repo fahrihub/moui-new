@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('name');
             $table->text('location');
             $table->date('created');
-            $table->text('section');
-            $table->text('subsection');
+            $table->foreignId('section_id');
+            $table->foreignId('subsection_id');
             $table->text('report')->nullable();
             $table->timestamps();
         });

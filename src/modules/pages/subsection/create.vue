@@ -1,5 +1,7 @@
 <template>
-    <form-create>
+    <form-create
+        slug="subsection" parent="system-subsection" title="Data Sub Bidang"
+    >
         <template v-slot:default="{ record }">
             <v-form ref="form">
                 <v-card flat rounded="lg">

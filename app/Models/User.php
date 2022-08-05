@@ -105,7 +105,7 @@ class User extends Authenticatable
             $model = new static;
             $model->name = $request->name;
             $model->email = $request->email;
-            $model->password = Hash::make($request);
+            $model->password = Hash::make($request->password);
             $model->section_id = $parent->section_id;
             $parent->users()->save($model);
             // $model->save();
@@ -129,6 +129,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Subsection::class);
     }
+
+    public function scopeSectionOnly($query)
+    {
+        return $query->whereNull('subsection_id');
+    }
+
 
 
 }

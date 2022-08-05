@@ -3,32 +3,13 @@
         parent="system-schedule" param-key="schedule"
     >
         <template
-            v-slot:default="{ combos: { section, subsection }, record, theme }"
+            v-slot:default="{ record }"
         >
             <v-form ref="form">
                 <v-card flat rounded="lg">
                     <v-card-text>
                         <v-row dense>
-                            <v-col cols="12">
-                                <v-select
-                                    :items="section"
-                                    label="Nama Bidang"
-                                    v-model="record.section"
-                                    prepend-inner-icon="apartment"
-                                    :color="theme"
-                                    readonly
-                                ></v-select>
-                            </v-col>
-                            <v-col cols="12">
-                                <v-select
-                                    :items="subsection"
-                                    label="Nama SubBidang"
-                                    v-model="record.subsection"
-                                    prepend-inner-icon="apartment"
-                                    :color="theme"
-                                    readonly
-                                ></v-select>
-                            </v-col>
+                            
                             <v-col cols="12">
                                 <v-textarea
                                     label="Nama Kegiatan"
@@ -78,8 +59,7 @@
                                 <v-textarea
                                     label="Laporan Kegiatan"
                                     v-model="record.report"
-                                    clearable
-                                    rows="4"
+                                    rows="1"
                                     prepend-inner-icon="print"
                                     readonly
                                 >

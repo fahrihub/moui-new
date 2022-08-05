@@ -90,8 +90,8 @@ class Schedule extends Model
             $model->name = $request->name;
             $model->location = $request->location;
             $model->created = $request->created;
-            $model->section = $request->section;
-            $model->subsection = $request->subsection;
+            $model->section_id = $request->user()->section_id;
+            $model->subsection_id = $request->user()->subsection_id;
             $model->report = $request->report;
             $model->save();
 
@@ -114,8 +114,8 @@ class Schedule extends Model
             $model->name = $request->name;
             $model->location = $request->location;
             $model->created = $request->created;
-            $model->section = $request->section;
-            $model->subsection = $request->subsection;
+            $model->section_id = $request->user()->section_id;
+            $model->subsection_id = $request->user()->subsection_id;
             $model->report = $request->report;
             $model->save();
             DB::commit();
@@ -147,5 +147,15 @@ class Schedule extends Model
                 'message' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    public function subsection()
+    {
+        return $this->belongsTo(Subsection::class);
     }
 }

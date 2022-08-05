@@ -1,6 +1,6 @@
 <template>
     <form-create
-        slug="user" parent="system-user" title="Data Pegawai"
+        slug="user" parent="system-section-user" title="Data Pegawai"
     >
         <template v-slot:default="{ record }">
             <v-form 

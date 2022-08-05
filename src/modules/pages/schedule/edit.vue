@@ -1,31 +1,14 @@
 <template>
     <form-edit
-        parent="system-schedule" param-key="schedule"
+        slug="schedule" parent="system-schedule" param-key="schedule"
     >
         <template
-            v-slot:default="{ combos: { section, subsection }, record, theme }"
+            v-slot:default="{ record }"
         >
             <v-form ref="form">
                 <v-card flat rounded="lg">
                     <v-card-text>
                         <v-row dense>
-                            <v-col cols="12">
-                                <v-select
-                                    :items="section"
-                                    label="Nama Bidang"
-                                    v-model="record.section"
-                                    :rules="[val => (val || '').length > 0 || 'Silahkan Pilih Bidang']"
-                                ></v-select>
-                            </v-col>
-                            <v-col cols="12">
-                                <v-select
-                                    :items="subsection"
-                                    label="Nama SubBidang"
-                                    v-model="record.subsection"
-                                    :color="theme"
-                                    :rules="[val => (val || '').length > 0 || 'Silahkan Pilih SubBidang']"
-                                ></v-select>
-                            </v-col>
                             <v-col cols="12">
                                 <v-textarea
                                     label="Nama Kegiatan"

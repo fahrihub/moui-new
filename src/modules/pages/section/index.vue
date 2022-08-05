@@ -2,12 +2,12 @@
     <page-data
         slug="section" parent="system-dashboard" title="Data Bidang"
     > 
-        <template v-slot:toolbar_selected="{ theme }">
+        <template v-slot:toolbar_selected="{ theme, record }">
             <moui-button
                 :color="theme"
-                icon="person"
-                tooltip="User"
-                @click="openUser"
+                icon="arrow_forward_ios"
+                tooltip="SubBidang"
+                @click="openSubsection(record)"
             ></moui-button>
         </template>
         <moui-table></moui-table>
@@ -19,8 +19,13 @@ export default {
     setup() {},
 
     methods: {
-        openUser() {
-            this.$router.push({ name: "system-user" });
+        openSubsection(record) {
+            this.$router.push({
+                name: "system-subsection",
+                params: {
+                    section: record.id,
+                }
+            })
         },
     },
 };

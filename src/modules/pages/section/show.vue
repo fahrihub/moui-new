@@ -5,8 +5,14 @@
         <template v-slot:toolbar="{ theme }">
             <moui-button
                 :color="theme"
+                icon="person"
+                tooltip="User"
+                @click="openUser"
+            ></moui-button>
+            <moui-button
+                :color="theme"
                 icon="folder_open"
-                tooltip="Bidang"
+                tooltip="SubBidang"
                 @click="openSubsection"
             ></moui-button>
         </template>
@@ -39,6 +45,10 @@ export default {
         openSubsection() {
             this.$router.push({ name: "system-subsection" });
         },
+
+        openUser(){
+            this.$router.push({ name: "system-section-user" });
+        }
     },
 };
 </script>

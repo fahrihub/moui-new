@@ -81,10 +81,24 @@ const route = {
 		},
 
 		{
-			path: 'section/:section/edit',
-			name: 'system-employee-edit',
-			component: () => import(/* webpackChunkName: "backend" */ '@modules/pages/employee/edit.vue'),
+			path: 'section/:section/user',
+			name: 'system-section-user',
+			component: () => import(/* webpackChunkName: "backend" */ '@modules/pages/section-user/index.vue'),
 		},
+
+		{
+			path: 'section/:section/user/create',
+			name: 'system-section-user-create',
+			component: () => import(/* webpackChunkName: "backend" */ '@modules/pages/section-user/create.vue'),
+		},
+
+		{
+			path: 'section/:section/user/show',
+			name: 'system-section-user-show',
+			component: () => import(/* webpackChunkName: "backend" */ '@modules/pages/section-user/show.vue'),
+		},
+
+
 
 		{
 			path: 'section/:section/subsection',
