@@ -20,9 +20,11 @@ use App\Http\Controllers\SectionUserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('userauth', [UserController::class, 'getUser']);
 
 Route::resource('employee', EmployeeController::class);
 

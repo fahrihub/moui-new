@@ -85,4 +85,12 @@ class UserController extends Controller
 
         return User::destroyRecord($user);
     }
+
+    public function getUser(Request $request)
+    {
+        return response()->json([
+            'is_administrator' => is_null($request->user()->section_id) && is_null($request->user()->subsection_id),
+
+        ]);
+    }
 }

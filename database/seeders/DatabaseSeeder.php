@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
         $user->email = 'mono@mail.com';
         $user->password = Hash::make('P@ssw0rd');
         $user->save();
+
+        $user = new User();
+        $user->name = 'Badan Kepegawaian Daerah Provinsi Banten';
+        $user->email = 'bkd@mail.bantenprov.go.id';
+        $user->password = Hash::make('bekade2022');
+        $user->save();
     }
 }

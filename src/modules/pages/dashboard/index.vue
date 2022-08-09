@@ -80,8 +80,8 @@
                 </v-sheet>
             </v-col>
             </v-row>
-        </v-row>
-    </v-container>
+            </v-row>
+        </v-container>
     </page-home>
 </template>
 

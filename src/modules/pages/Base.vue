@@ -28,7 +28,7 @@
                     </v-list-item-content>
                 </v-list-item> -->
 
-                <v-list-item :to="{ name: 'system-section' }">
+                <v-list-item :to="{ name: 'system-section' }" v-if="is_administrator">
                     <v-list-item-icon>
                         <v-icon>diversity_2</v-icon>
                     </v-list-item-icon>
@@ -50,5 +50,12 @@
 </template>
 
 <script>
- 
+export default {
+    data:() => ({
+        is_administrator: false
+    }),
+    mounted() {
+        this.is_administrator=this.$storage.getItem('is_administrator');
+    },
+}
 </script>

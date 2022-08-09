@@ -101,6 +101,17 @@ export default {
     }),
 
     methods: {
+        getUser() {
+            this.systemStore.$http('/api/userauth', {
+                method: 'GET', 
+            })
+            .then(({is_administrator}) => {
+                this.$storage.setItem('authenticated', true);
+                this.$storage.setItem('is_administrator', is_administrator);
+                this.$router.push({ name: process.env.VUE_APP_PAGE_DASHBOARD });
+            });
+
+        },
         attemptLogin() {
             if (!this.$refs.form.validate()) {
                 return;
@@ -113,8 +124,7 @@ export default {
                 }
             })
             .then(() => {
-                this.$storage.setItem('authenticated', true);
-                this.$router.push({ name: process.env.VUE_APP_PAGE_DASHBOARD });
+                this.getUser();
             })
             .catch(({ status, message }) => {
                 if (status === 419 || typeof status === 'undefined') {
