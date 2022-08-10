@@ -32,6 +32,8 @@ Route::resource('section', SectionController::class);
 
 Route::resource('section.subsection', SubsectionController::class);
 
+Route::get('schedule/export/', [ScheduleController::class, 'export']);
+
 Route::resource('schedule', ScheduleController::class);
 
 Route::resource('section.subsection.user', UserController::class);

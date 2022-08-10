@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Exports\ScheduleExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Resources\ScheduleCollection;
 use App\Http\Resources\ScheduleShowResource;
 
@@ -82,5 +84,10 @@ class ScheduleController extends Controller
         $this->validate($request, []);
 
         return Schedule::destroyRecord($schedule);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ScheduleExport, 'Agenda_Kegiatan.xls');
     }
 }
