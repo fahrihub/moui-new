@@ -18,7 +18,8 @@ class ScheduleController extends Controller
     public function index(Request $request)
     {
         return new ScheduleCollection(
-            Schedule::filter($request->filters)
+            Schedule::forCurrentUser($request->user())
+                ->filter($request->filters)
                 ->search($request->findBy)
                 ->sortBy($request->sortBy, $request->sortDesc)
                 ->paginate($request->itemsPerPage)

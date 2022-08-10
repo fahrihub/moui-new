@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Section;
+use App\Models\Employee;
+use App\Models\Subsection;
+use Illuminate\Http\Request;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeShowResource;
-use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -14,10 +17,13 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,Section $section, Subsection $subsection, User $user)
     {
         return new EmployeeCollection(
-            Employee::filter($request->filters)
+            $subsection->users()
+                ->subsectionOnly()
+                ->filter($request->filters)
+                ->applyMode($request->mode)
                 ->search($request->findBy)
                 ->sortBy($request->sortBy, $request->sortDesc)
                 ->paginate($request->itemsPerPage)

@@ -158,4 +158,19 @@ class Schedule extends Model
     {
         return $this->belongsTo(Subsection::class);
     }
+
+    public function scopeForCurrentUser($query, $user)
+    {
+        if (is_null($user->section_id) && is_null($user->subsection_id))
+        {
+            return $query;
+        }
+        if ($user->subsection_id)
+        {
+            return $query->where('subsection_id', '=', $user->subsection_id);
+        }
+            return $query->where('section_id', '=', $user->section_id);
+    }
+
+    
 }

@@ -37,7 +37,7 @@
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item :to="{ name: 'system-report' }">
+                <v-list-item :to="{ name: 'system-schedule' }">
                     <v-list-item-icon>
                         <v-icon>print</v-icon>
                     </v-list-item-icon>

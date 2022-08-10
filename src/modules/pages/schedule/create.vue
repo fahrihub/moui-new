@@ -56,7 +56,7 @@
                                     </v-date-picker>
                                 </v-menu>
                             </v-col>
-                            <v-col cols="12">
+                            <!-- <v-col cols="12">
                                 <v-textarea
                                     label="Laporan Kegiatan"
                                     v-model="record.report"
@@ -65,7 +65,7 @@
                                     prepend-inner-icon="print"
                                 >
                                 </v-textarea>
-                            </v-col>
+                            </v-col> -->
                         </v-row>
                     </v-card-text>
                 </v-card>
