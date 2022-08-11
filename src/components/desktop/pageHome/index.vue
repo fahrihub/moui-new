@@ -1,14 +1,14 @@
 <template>
     <v-card :color="`${theme} darken-2`" flat tile height="100%">
-        <v-toolbar 
-            :class="`rounded-t-lg z-index-1`"
-            tile
-            flat
-        >
+        <v-toolbar :class="`rounded-t-lg z-index-1`" tile flat>
             <v-spacer></v-spacer>
 
             <v-toolbar-title class="text-uppercase pl-0">
-                <span class="font-fredoka-one spacing-1" :class="`${theme}--text`">Dashboard</span>
+                <span
+                    class="font-fredoka-one spacing-1"
+                    :class="`${theme}--text`"
+                    >Dashboard</span
+                >
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
@@ -20,10 +20,7 @@
             ></moui-button>
         </v-toolbar>
 
-        <v-sheet
-            :class="`rounded-b-lg`"
-            height="calc(100vh - 72px)"
-        >
+        <v-sheet :class="`rounded-b-lg`" height="calc(100vh - 72px)">
             <v-responsive
                 class="relative overflow-y-auto z-index-0 rounded-b-lg"
                 height="calc(100vh - 72px)"
@@ -46,20 +43,30 @@
 </template>
 
 <script>
-import { storeToRefs } from 'pinia';
-import { useSystemStore } from '@stores/systemStore';
+import { storeToRefs } from "pinia";
+import { useSystemStore } from "@stores/systemStore";
 
 export default {
-    name: 'page-home',
-    
+    name: "page-home",
+
     setup() {
         const systemStore = useSystemStore();
         const { theme } = storeToRefs(systemStore);
 
-        return { 
+        return {
             systemStore,
-            theme
+            theme,
         };
+    },
+
+    mounted() {
+        this.systemStore
+            .$http("/api/dashboard", {
+                method: "GET",
+            })
+            .then((response) => {
+                this.$emit("initialized", response);
+            });
     },
 
     methods: {
@@ -77,5 +84,5 @@ export default {
                 });
         },
     },
-}
+};
 </script>

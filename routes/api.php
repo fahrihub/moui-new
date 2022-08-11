@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubsectionController;
 use App\Http\Controllers\SectionUserController;
 
@@ -23,6 +24,7 @@ use App\Http\Controllers\SectionUserController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('dashboard', [DashboardController::class, 'index']);
 
 Route::get('userauth', [UserController::class, 'getUser']);
 

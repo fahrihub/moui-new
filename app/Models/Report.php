@@ -4,8 +4,11 @@ namespace App\Models;
 
 use App\Traits\Filterable;
 use App\Traits\Searchable;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Resources\ReportShowResource;
+
 
 class Report extends Model
 {
@@ -76,5 +79,29 @@ class Report extends Model
         return $query
             ->select('name AS text', 'id AS value')
             ->get();
+    }
+
+    public static function updateRecord($model, $request)
+    {
+        DB::beginTransaction(); //transaksi pada database -> tabel 1 -> table 2 -> tabel 3
+
+        try {
+
+            $model->name = $request->name;
+            $model->location = $request->location;
+            $model->created = $request->created;
+            $model->section_id = $request->user()->section_id;
+            $model->subsection_id = $request->user()->subsection_id;
+            $model->report = $request->report;
+            $model->save();
+            DB::commit();
+            return new ReportShowResource($model);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }

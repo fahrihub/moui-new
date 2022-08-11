@@ -1,10 +1,10 @@
 <template>
     <form-create
-        slug="schedule" parent="system-schedule" title="Agenda Kegiatan"
+        slug="schedule"
+        parent="system-schedule"
+        title="Agenda Kegiatan"
     >
-        <template
-            v-slot:default="{ record }"
-        >
+        <template v-slot:default="{ record }">
             <v-form ref="form">
                 <v-card flat rounded="lg">
                     <v-card-text>
@@ -16,7 +16,11 @@
                                     clearable
                                     rows="2"
                                     prepend-inner-icon="browse_activity"
-                                    :rules="[val => (val || '').length > 0 || 'Harap Masukan Nama Kegiatan']"
+                                    :rules="[
+                                        (v) =>
+                                            (v || '').length > 0 ||
+                                            'Harap Masukan Nama Kegiatan',
+                                    ]"
                                 >
                                 </v-textarea>
                             </v-col>
@@ -25,7 +29,11 @@
                                     label="Nama Tempat"
                                     v-model="record.location"
                                     prepend-inner-icon="pin_drop"
-                                    :rules="[val => (val || '').length > 0 || 'Harap Masukan Tempat']"
+                                    :rules="[
+                                        (v) =>
+                                            (v || '').length > 0 ||
+                                            'Harap Masukan Tempat',
+                                    ]"
                                 >
                                 </v-text-field>
                             </v-col>
@@ -44,14 +52,18 @@
                                             readonly
                                             v-bind="attrs"
                                             v-on="on"
-                                            @click:clear="date=null"
-                                            :rules="[val => (val || '').length > 0 || 'Harap Masukan Tanggal']"
+                                            @click:clear="date = null"
+                                            :rules="[
+                                                (val) =>
+                                                    (val || '').length > 0 ||
+                                                    'Harap Masukan Tanggal',
+                                            ]"
                                         >
                                         </v-text-field>
                                     </template>
                                     <v-date-picker
                                         v-model="record.created"
-                                        @input="menu=false"
+                                        @input="menu = false"
                                     >
                                     </v-date-picker>
                                 </v-menu>
@@ -73,3 +85,11 @@
         </template>
     </form-create>
 </template>
+
+<script>
+export default {
+    data: () => ({
+        menu: false,
+    }),
+};
+</script>

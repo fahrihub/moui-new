@@ -4,7 +4,7 @@
     >
 
         <moui-table></moui-table>
-
+        
     </page-data>
 
 </template>
