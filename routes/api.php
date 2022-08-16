@@ -26,6 +26,8 @@ use App\Http\Controllers\SectionUserController;
 // });
 Route::get('dashboard', [DashboardController::class, 'index']);
 
+Route::get('dashboard/{date}', [DashboardController::class, 'show']);
+
 Route::get('userauth', [UserController::class, 'getUser']);
 
 Route::resource('employee', EmployeeController::class);

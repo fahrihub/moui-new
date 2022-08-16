@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -22,7 +23,17 @@ class DashboardController extends Controller
 
                 ]);
                 return $carry;
-            }, [])
+            }, []),
+            'focus' => now()->format('Y-m-d'),
+            'datatable' => Schedule::with(['section', 'subsection'])->whereMonth('created', now()->format('m'))->get()
+        ]);
+    }
+
+    public function show(Request $request, $date)
+    {
+        $selected = Carbon::createFromFormat('Y-m-d', $date);
+        return response()->json([
+            'datatable' => Schedule::with(['section', 'subsection'])->whereMonth('created', $selected->format('m'))->get()
         ]);
     }
 }
