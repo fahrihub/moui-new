@@ -22,7 +22,7 @@ module.exports = {
             entry: "src/desktop.js",
             template: "src/template/index.html",
             filename: "index.html",
-            title: "MONOLAND",
+            title: "BKD Agenda",
         },
     },
 

@@ -40,14 +40,14 @@
                 </v-list-item-content>
             </v-list-item>
 
-            <!-- <v-list-item :to="{ name: 'system-report' }">
-                    <v-list-item-icon>
-                        <v-icon>print</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                        <v-list-item-title>Laporan</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item> -->
+            <v-list-item :to="{ name: 'system-setting' }">
+                <v-list-item-icon>
+                    <v-icon>settings</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-title>Pengaturan</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
         </template>
     </page-base>
 </template>

@@ -134,7 +134,4 @@ class User extends Authenticatable
     {
         return $query->whereNull('subsection_id');
     }
-
-
-
 }

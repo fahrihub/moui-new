@@ -206,6 +206,15 @@ const route = {
                     /* webpackChunkName: "backend" */ "@modules/pages/report/index.vue"
                 ),
         },
+
+        {
+            path: "setting",
+            name: "system-setting",
+            component: () =>
+                import(
+                    /* webpackChunkName: "backend" */ "@modules/pages/setting/index.vue"
+                ),
+        },
     ],
 };
 

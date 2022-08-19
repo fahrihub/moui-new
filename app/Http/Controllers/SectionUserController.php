@@ -88,6 +88,6 @@ class SectionUserController extends Controller
     {
         $this->validate($request, []);
 
-        return User::destroyRecord($user);
+        return User::destroyRecord($section, $user);
     }
 }
