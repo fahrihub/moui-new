@@ -31,17 +31,19 @@
                             </v-col>
                         </v-row>
                     </v-card-text>
-                    <v-card-actions>
-                        <v-switch
-                            v-model="show"
-                            inset
-                            label="Lihat Sandi"
-                        ></v-switch>
-                        <v-spacer></v-spacer>
-                        <v-btn depressed color="primary" @click="ubah"
-                            >Ubah Password</v-btn
-                        >
-                    </v-card-actions>
+                    <v-container>
+                        <v-card-actions>
+                            <v-switch
+                                v-model="show"
+                                inset
+                                label="Lihat Sandi"
+                            ></v-switch>
+                            <v-spacer></v-spacer>
+                            <v-btn depressed color="primary" @click="ubah"
+                                >Ubah Password</v-btn
+                            >
+                        </v-card-actions>
+                    </v-container>
                 </v-card>
             </v-form>
         </template>
@@ -49,8 +51,19 @@
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
+import { useSystemStore } from '@stores/systemStore';
+
 export default {
-    setup() {},
+    setup() {
+        const systemStore = useSystemStore();
+        const { combos, currentRecord, theme } = storeToRefs(systemStore);
+
+        return {
+            systemStore,
+            combos, currentRecord, theme
+        }  
+    },
 
     data() {
         return {
@@ -73,6 +86,11 @@ export default {
                 },
             }).then(() => {
                 this.$router.push({ name: "system-dashboard" });
+
+                this.systemStore.$snackbar({
+                    color: 'success',
+                    text: 'Password berhasil diubah'
+                })
             });
         },
     },
