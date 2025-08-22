@@ -2,7 +2,7 @@ const { InjectManifest } = require("workbox-webpack-plugin");
 const manifestOptions = require("./vue.pwa");
 
 module.exports = {
-    outputDir: "/Users/fahriwijaya/Monoland/agendaku-frontend/public",
+    outputDir: "/Users/aang/Herd/moui-new/public",
 
     css: {
         extract: {
